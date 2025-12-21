@@ -1,0 +1,41 @@
+import 'package:banco_douro/ui/styles/app_colors.dart';
+
+import '../../models/account.dart';
+import 'package:flutter/material.dart';
+
+class AccountWidget extends StatelessWidget {
+  final Account account;
+  const AccountWidget({super.key, required this.account});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 128,
+      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: 8),
+      decoration: BoxDecoration(
+        color: AppColor.lightOrange,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "${account.name} ${account.lastName}",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              Text("ID: ${account.id}"),
+              Text("Saldo: ${account.balance.toStringAsFixed(2)}"),
+              Text("Tipo: ${account.accountType ?? "Sem tipo Definido"}"),
+            ],
+          ),
+          IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
+        ],
+      ),
+    );
+  }
+}
