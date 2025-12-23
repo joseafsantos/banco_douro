@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:banco_douro/ui/styles/app_colors.dart';
 
 import '../../models/account.dart';
@@ -28,7 +30,7 @@ class AccountWidget extends StatelessWidget {
                 "${account.name} ${account.lastName}",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              Text("ID: ${account.id}"),
+              Text("ID: ${account.id.substring(0, min(account.id.length, 5))}"),
               Text("Saldo: ${account.balance.toStringAsFixed(2)}"),
               Text("Tipo: ${account.accountType ?? "Sem tipo Definido"}"),
             ],
